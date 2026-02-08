@@ -23,11 +23,6 @@ export async function testarConexao() {
     }
 }
 
-export async function inserirUsuario(email: string, senha: string) {
-    const sql = 'INSERT INTO usuario (email, senha) VALUES (?, ?)';
-    await pool.execute(sql, [email, senha]);
-}
-
 export async function inserirPessoa(nome: string, email:string, telefone:string, cargo:string){
     const sql = 'INSERT INTO pessoas (nome,email,telefone,cargo) VALUES (?,?,?,?)';
     await pool.execute(sql, [nome,email,telefone,cargo]);
