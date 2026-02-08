@@ -1,3 +1,4 @@
+import {pool} from '../BancoDeDados';
 interface IPessoas{
     id: number;
     nome: string;
@@ -22,5 +23,25 @@ interface IPessoas{
             this.cargo = cargo;
         }
 
+        static validarEmail(email:string, telefone:string): boolean{
+            const reEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            return reEmail.test(email);
+        }
+
+        static validarTelefone(telefone: string): boolean {
+            const reTelefone = /^\d{10,15}$/;
+            return reTelefone.test(telefone);
+        }
+
+        static async emailExiste(email: string): Promise<boolean> {
+            const sql = 'SELECT COUNT(*) as total FROM pessoas WHERE email = ?';
+            const [resultado]: any = await pool.execute(sql, [email]);
+            return resultado[0].total > 0;
+        }
     }
+
+        
+
+    
 

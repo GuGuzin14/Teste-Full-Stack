@@ -3,12 +3,18 @@ import { pool } from "../BancoDeDados";
 import {inserirPessoa} from '../BancoDeDados';
 import {deletarPessoas} from '../BancoDeDados';
 import {editarPessoas} from '../BancoDeDados';
+import {Pessoas} from '../models/modelPessoas';
 
 export async function criarPessoa(req: Request, res: Response){
     const {nome, email, telefone, cargo} = req.body;
     if (!nome || !email || !telefone || !cargo){
         return res.status(400).json({error: 'Todos os campos são obrigatórios'});
     }
+
+    if (await Pessoas.emailExiste(email)) {
+        return res.status(409).json({error: 'Email já cadastrado'});
+    }
+
     try{
         await inserirPessoa(nome, email, telefone, cargo);
         res.status(201).json({message: 'Pessoa criada com sucesso'});
@@ -67,4 +73,6 @@ export async function listarPessoas(req:Request, res: Response){
     {        console.error('Erro ao listar pessoas:', erro);
         res.status(500).json({ error: 'Erro ao listar pessoas' });
     }
+
+    
 }
