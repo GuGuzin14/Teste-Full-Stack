@@ -1,10 +1,17 @@
 import express, {Request, Response} from 'express';
+import cors from 'cors';
 import pessoasRoutes from './routes/routesPessoas';
 import produtosRoutes from './routes/routesProdutos';
 import authRoutes from './routes/routesAuth';
 
 const app = express();
 const port = 3000;
+
+// Configurar CORS para aceitar requisições do frontend
+app.use(cors({
+  origin: 'http://localhost:5173', // URL do frontend Vite
+  credentials: true
+}));
 
 app.use(express.json());
 

@@ -17,10 +17,35 @@
   max-width: 400px;
 }
 
-.login-box h2 {
-  text-align: center;
-  color: #333;
+.header-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
   margin-bottom: 0.5rem;
+}
+
+.icon-box {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0.75rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+}
+
+.login-box h2 {
+  color: #333;
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .subtitle {
@@ -106,4 +131,13 @@ button:disabled {
     color: #000;
     font-size: 0.7rem;
     margin-top: 0.5rem;
+}
+
+.img {
+    display: flex;
+    justify-content: left;
+    margin-top: 1rem;
+    height: 10%;
+    width: 10%;
+
 }

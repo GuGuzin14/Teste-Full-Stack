@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import loginIcon from '../assets/login_icon.svg';
 import './Login.css';
 
 interface LoginProps {
@@ -40,7 +41,12 @@ function Login({ onLoginSuccess }: LoginProps) {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2>MgnMgt</h2>
+        <div className="header-title">
+          <div className="icon-box">
+            <img src={loginIcon} alt="Login Icon" className='icon'/>
+          </div>
+          <h2>MgnMgt</h2>
+        </div>
         <p className="subtitle">Manage people and products with ease</p>
         
         <form onSubmit={handleSubmit}>
