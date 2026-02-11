@@ -23,19 +23,14 @@ export async function testarConexao() {
     }
 }
 
-export async function inserirUsuario(email: string, senha: string) {
-    const sql = 'INSERT INTO usuario (email, senha) VALUES (?, ?)';
-    await pool.execute(sql, [email, senha]);
-}
-
 export async function inserirPessoa(nome: string, email:string, telefone:string, cargo:string){
     const sql = 'INSERT INTO pessoas (nome,email,telefone,cargo) VALUES (?,?,?,?)';
     await pool.execute(sql, [nome,email,telefone,cargo]);
 }
 
-export async function inserirProduto(nome:string, kfu:number, quantidade:number, categoria:string){
-    const sql = 'INSERT INTO produtos (nome, kfu, quantidade, categoria) VALUES (?,?,?,?)';
-    await pool.execute(sql, [nome, kfu, quantidade, categoria]);
+export async function inserirProduto(nome:string, sku:number, preco:number, quantidade:number, categoria:string){
+    const sql = 'INSERT INTO produtos (nome, sku, preco, quantidade, categoria) VALUES (?,?,?,?,?)';
+    await pool.execute(sql, [nome, sku, preco, quantidade, categoria]);
 }
 
 export async function editarPessoas(id: number, email:string, nome:string, telefone:string, cargo:string){
@@ -43,9 +38,9 @@ export async function editarPessoas(id: number, email:string, nome:string, telef
     await pool.execute(sql, [email, nome, telefone, cargo, id]);
 }
 
-export async function editarProdutos(id: number, nome: string, kfu:number, quantidade: number, categoria: string){
-    const sql = 'UPDATE produtos SET nome = ?, kfu = ?, quantidade = ?, categoria = ? WHERE id = ? ';
-    await pool.execute(sql, [nome, kfu, quantidade, categoria, id]);
+export async function editarProdutos(id: number, nome: string, sku:number, preco:number, quantidade: number, categoria: string){
+    const sql = 'UPDATE produtos SET nome = ?, sku = ?, preco = ?, quantidade = ?, categoria = ? WHERE id = ? ';
+    await pool.execute(sql, [nome, sku, preco, quantidade, categoria, id]);
 }
 
 export async function deletarPessoas(id: number){
