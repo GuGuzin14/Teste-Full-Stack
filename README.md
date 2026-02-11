@@ -285,6 +285,8 @@ Este projeto foi desenvolvido para fins educacionais.
 
 ## 👨‍💻 Autor
 
+Gustavo Henrique Bispo Costa
+
 Desenvolvido como projeto Full Stack com TypeScript
 
 ---
