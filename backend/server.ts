@@ -7,9 +7,8 @@ import authRoutes from './routes/routesAuth';
 const app = express();
 const port = 3000;
 
-// Configurar CORS para aceitar requisições do frontend
 app.use(cors({
-  origin: 'http://localhost:5173', // URL do frontend Vite
+  origin: 'http://localhost:5173',
   credentials: true
 }));
 

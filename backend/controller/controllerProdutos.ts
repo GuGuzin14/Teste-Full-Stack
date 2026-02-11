@@ -5,12 +5,12 @@ import {deletarProdutos} from '../BancoDeDados';
 import {editarProdutos} from '../BancoDeDados';
 
 export async function criarProduto(req: Request, res: Response){
-    const {nome, kfu, quantidade, categoria} = req.body;
-    if (!nome || !kfu || !quantidade || !categoria){
-        return res.status(400).json({error: 'Todso os campos obrigatorios'});
+    const {nome, sku, preco, quantidade, categoria} = req.body;
+    if (!nome || !sku || preco === undefined || !quantidade || !categoria){
+        return res.status(400).json({error: 'Todos os campos obrigatórios'});
     }
     try{
-        await inserirProduto(nome, kfu, quantidade, categoria);
+        await inserirProduto(nome, sku, preco, quantidade, categoria);
         res.status(201).json({message: 'Produto criado com sucesso'});
     }catch(erro){
         console.error("Erro ao criar produto:", erro);
@@ -46,12 +46,12 @@ export async function atualizarProdutos(req: Request, res:Response){
     if(isNaN(id)){
         return res.status(400).json({error: 'id invalido'});
     }
-    const {nome, kfu, quantidade, categoria} = req.body;
-    if(!nome || !kfu || !quantidade || !categoria){
-        return res.status(400).json({error:' Todos os campos obrigatorios'});
+    const {nome, sku, preco, quantidade, categoria} = req.body;
+    if(!nome || !sku || preco === undefined || !quantidade || !categoria){
+        return res.status(400).json({error:' Todos os campos obrigatórios'});
     }
     try{
-        await editarProdutos(id, nome, kfu, quantidade, categoria);
+        await editarProdutos(id, nome, sku, preco, quantidade, categoria);
         res.json({message: 'Produto atualizado com sucesso'});
     }catch(erro){
         console.error('Erro ao atualizar produto: ', erro);

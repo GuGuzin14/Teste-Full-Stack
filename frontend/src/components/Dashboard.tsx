@@ -9,23 +9,23 @@ function Dashboard({ usuarioLogado, onNavigate }: DashboardProps) {
   return (
     <div className="dashboard-content">
       <div className="welcome-section">
-        <h1>Bem-vindo ao MgnMgt! 👋</h1>
-        <p>Olá, <strong>{usuarioLogado.split('@')[0]}</strong>! Gerencie pessoas e produtos com facilidade.</p>
+        <h1>Welcome to MgnMgt</h1>
+        <p>Hello, <strong>{usuarioLogado.split('@')[0]}</strong>! Manage people and products efficiently.</p>
       </div>
 
       <div className="cards-container">
         <div className="dashboard-card pessoas" onClick={() => onNavigate('pessoas')}>
           <div className="card-icon">👥</div>
-          <h2>Pessoas</h2>
-          <p>Gerencie informações de pessoas</p>
-          <button className="card-button">Acessar →</button>
+          <h2>People</h2>
+          <p>Manage people information</p>
+          <button className="card-button">Access →</button>
         </div>
 
         <div className="dashboard-card produtos" onClick={() => onNavigate('produtos')}>
           <div className="card-icon">📦</div>
-          <h2>Produtos</h2>
-          <p>Gerencie seu inventário de produtos</p>
-          <button className="card-button">Acessar →</button>
+          <h2>Products</h2>
+          <p>Manage your product inventory</p>
+          <button className="card-button">Access →</button>
         </div>
       </div>
     </div>

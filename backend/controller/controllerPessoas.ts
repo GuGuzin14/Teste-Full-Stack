@@ -12,7 +12,7 @@ export async function criarPessoa(req: Request, res: Response){
     }
 
     if (await Pessoas.emailExiste(email)) {
-        return res.status(409).json({error: 'Email já cadastrado'});
+        return res.status(409).json({error: '<span style="color:red">Email já cadastrado</span>'});
     }
 
     try{

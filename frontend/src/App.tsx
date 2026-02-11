@@ -9,6 +9,7 @@ import './App.css';
 function App() {
   const [usuarioLogado, setUsuarioLogado] = useState<string | null>(null);
   const [paginaAtual, setPaginaAtual] = useState<string>('home');
+  const [sidebarAberto, setSidebarAberto] = useState(false);
 
   const handleLoginSuccess = (usuario: string) => {
     setUsuarioLogado(usuario);
@@ -22,21 +23,38 @@ function App() {
 
   const handleNavigate = (page: string) => {
     setPaginaAtual(page);
+    setSidebarAberto(false); 
   };
 
-  // Se não estiver logado, mostra a tela de login
+  const toggleSidebar = () => {
+    setSidebarAberto(!sidebarAberto);
+  };
+
+
   if (!usuarioLogado) {
     return <Login onLoginSuccess={handleLoginSuccess} />;
   }
 
-  // Se estiver logado, mostra o dashboard com sidebar
+  
   return (
     <div className="app-container">
+      <button className="mobile-menu-btn" onClick={toggleSidebar}>
+        <span className="hamburger-line"></span>
+        <span className="hamburger-line"></span>
+        <span className="hamburger-line"></span>
+      </button>
+
+      
+      {sidebarAberto && (
+        <div className="sidebar-backdrop" onClick={() => setSidebarAberto(false)}></div>
+      )}
+
       <Sidebar 
         usuarioLogado={usuarioLogado}
         onNavigate={handleNavigate}
         onLogout={handleLogout}
         paginaAtual={paginaAtual}
+        isOpen={sidebarAberto}
       />
       
       <main className="main-content">
